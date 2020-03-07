@@ -51,12 +51,33 @@ app.post("/api/notes", function(req, res) {
         }
     });
 });
+
+app.delete("/api/notes/:id", function(req, res) {
+    fs.readFile("./db/db.json", "utf8", function(err, data) {
+        if (err) {
+            throw err;
+        } else {
+            const results = JSON.parse(data);
+            const indexToRemove = results.findIndex(function(result) {
+                return result.id === req.params.id;
+            });
+            results.splice(indexToRemove, 1);
+            fs.writeFile("./db/db.json", JSON.stringify(results), function(err) {
+                if (err) {
+                    throw err;
+                } else {
+                    res.sendStatus(200);
+                }
+            });
+        }
+    });
+});
   
 
 app.listen(Port, function(err) {
   if (err) {
     throw err;
   } else {
-    console.log("Listening on " + Post);
+    console.log("Listening on " + Port);
   }
 });
