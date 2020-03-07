@@ -8,11 +8,11 @@ This is an app that lets save and delete notes!
 
 In order to install this project follow the Github link to https://github.com/kacox1251/unit11-homework-notetaker and fork the project. After that clone the repository through your Git Bash. To do that type 'git clone" and paste the HTML link inside your terminal, it will ask you for your github password. After the repository is saved in the directory of your choice you can access the HTML and CSS files and view them in your default browser.
 You can also download as a zip file by clicking "Download zip" in the "Clone or Download" dropdown.
-You can also see the live site by following the link to https://intense-tor-00953.herokuapp.com/.
+You can also see the live site by following the link to https://floating-gorge-00554.herokuapp.com/.
 
 ## Usage
 
-On this page you will see a place to type a burger name of your choice followed by a "submit" button. The "submit" button adds the burger into the burger database and from there it will display all burgers above. Undevoured burgers on the left with a "Devour!" button next to the name. Clicking the "Devour!" button will then devour that burger and add it to the devoured list. Devoured burgers are displayed on the right.
+On start, you will see a page with a button that says Get Started. From there you can typre in a "Note Title" and some "Note Text." Click the save icon to save it to your note list on the left side of the page. While notes are on your list, you can delete them from your list by pressing the trash icon.
 
 ## Credits
 
