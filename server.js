@@ -7,7 +7,7 @@ const app = express();
 
 let idCounter = 0;
 
-const Port = 3030
+var PORT = process.env.PORT || 3030;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -74,10 +74,10 @@ app.delete("/api/notes/:id", function(req, res) {
 });
   
 
-app.listen(Port, function(err) {
+app.listen(PORT, function(err) {
   if (err) {
     throw err;
   } else {
-    console.log("Listening on " + Port);
+    console.log("Listening on " + PORT);
   }
 });
