@@ -18,7 +18,15 @@ app.get("/notes", function(req, res) {
   res.sendFile(path.join(__dirname, "public", "notes.html"));
 });
 
-
+app.get("/api/notes", function(req, res) {
+    fs.readFile("./db/db.json", "utf8", function(err, data) {
+      if (err) {
+        throw err;
+      } else {
+        res.json(JSON.parse(data));
+      }
+    });
+  });
 
 app.listen(Port, function(err) {
   if (err) {
