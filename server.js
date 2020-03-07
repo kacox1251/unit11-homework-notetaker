@@ -4,6 +4,9 @@ const fs = require("fs");
 
 const app = express();
 
+
+let idCounter = 0;
+
 const Port = 3030
 
 app.use(express.json());
@@ -20,13 +23,35 @@ app.get("/notes", function(req, res) {
 
 app.get("/api/notes", function(req, res) {
     fs.readFile("./db/db.json", "utf8", function(err, data) {
-      if (err) {
-        throw err;
-      } else {
-        res.json(JSON.parse(data));
-      }
+        if (err) {
+            throw err;
+        } else {
+            res.json(JSON.parse(data));
+        }
     });
-  });
+});
+
+
+app.post("/api/notes", function(req, res) {
+    fs.readFile("./db/db.json", "utf8", function(err, data) {
+        if (err) {
+            throw err;
+        } else {
+            const results = JSON.parse(data);
+            req.body.id = idCounter;
+            idCounter++;
+            results.push(req.body);
+            fs.writeFile("./db/db.json", JSON.stringify(results), function(err) {
+                if (err) {
+                    throw err;
+                } else {
+                    res.sendStatus(200);
+                }
+            });
+        }
+    });
+});
+  
 
 app.listen(Port, function(err) {
   if (err) {
